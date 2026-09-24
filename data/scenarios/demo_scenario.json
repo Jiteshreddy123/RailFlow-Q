@@ -1,0 +1,58 @@
+{
+  "scenario_id": "DEMO-001",
+  "stations": [
+    {"id": "ST1", "name": "Mine Junction"},
+    {"id": "ST2", "name": "North Yard"},
+    {"id": "ST3", "name": "Central Junction"},
+    {"id": "ST4", "name": "South Yard"},
+    {"id": "ST5", "name": "Port Terminal"}
+  ],
+  "sections": [
+    {"id": "S1", "source": "ST1", "destination": "ST2", "capacity": 1, "travel_time": 20, "bidirectional": false},
+    {"id": "S2", "source": "ST2", "destination": "ST3", "capacity": 1, "travel_time": 25, "bidirectional": false},
+    {"id": "S3", "source": "ST3", "destination": "ST4", "capacity": 1, "travel_time": 30, "bidirectional": false},
+    {"id": "S4", "source": "ST4", "destination": "ST5", "capacity": 1, "travel_time": 20, "bidirectional": false},
+    {"id": "S5", "source": "ST2", "destination": "ST4", "capacity": 1, "travel_time": 45, "bidirectional": false},
+    {"id": "S6", "source": "ST3", "destination": "ST5", "capacity": 1, "travel_time": 50, "bidirectional": false}
+  ],
+  "routes": [
+    {"id": "R_A", "origin": "ST1", "destination": "ST5", "sections": ["S1", "S2", "S3", "S4"], "travel_time": 95},
+    {"id": "R_B", "origin": "ST1", "destination": "ST5", "sections": ["S1", "S2", "S6"], "travel_time": 95},
+    {"id": "R_C", "origin": "ST1", "destination": "ST5", "sections": ["S1", "S5", "S4"], "travel_time": 85}
+  ],
+  "rakes": [
+    {"id": "R1", "current_location": "ST1", "availability_time": 0, "capacity": 60, "type": "BOX"},
+    {"id": "R2", "current_location": "ST1", "availability_time": 0, "capacity": 50, "type": "BOX"},
+    {"id": "R3", "current_location": "ST1", "availability_time": 10, "capacity": 80, "type": "HOPPER"},
+    {"id": "R4", "current_location": "ST2", "availability_time": 0, "capacity": 70, "type": "HOPPER"}
+  ],
+  "demands": [
+    {"id": "D1", "origin": "ST1", "destination": "ST5", "quantity": 45, "deadline": 150, "priority": 3},
+    {"id": "D2", "origin": "ST1", "destination": "ST5", "quantity": 55, "deadline": 180, "priority": 2},
+    {"id": "D3", "origin": "ST1", "destination": "ST5", "quantity": 35, "deadline": 210, "priority": 1}
+  ],
+  "yards": [
+    {"id": "Y1", "station_id": "ST2", "track_capacity": 2, "occupied_tracks": 1, "dwell_time": 15},
+    {"id": "Y2", "station_id": "ST4", "track_capacity": 2, "occupied_tracks": 1, "dwell_time": 15}
+  ],
+  "schedule": [
+    {"rake_id": "R1", "demand_id": "D1", "route_id": "R_A", "section": "S1", "start": 0, "end": 20, "present": true},
+    {"rake_id": "R1", "demand_id": "D1", "route_id": "R_A", "section": "S2", "start": 20, "end": 45, "present": true},
+    {"rake_id": "R1", "demand_id": "D1", "route_id": "R_A", "section": "S3", "start": 45, "end": 75, "present": true},
+    {"rake_id": "R1", "demand_id": "D1", "route_id": "R_A", "section": "S4", "start": 75, "end": 95, "present": true},
+    {"rake_id": "R2", "demand_id": "D2", "route_id": "R_A", "section": "S1", "start": 30, "end": 50, "present": true},
+    {"rake_id": "R2", "demand_id": "D2", "route_id": "R_A", "section": "S2", "start": 50, "end": 75, "present": true},
+    {"rake_id": "R2", "demand_id": "D2", "route_id": "R_A", "section": "S3", "start": 75, "end": 105, "present": true},
+    {"rake_id": "R2", "demand_id": "D2", "route_id": "R_A", "section": "S4", "start": 105, "end": 125, "present": true},
+    {"rake_id": "R3", "demand_id": "D3", "route_id": "R_B", "section": "S1", "start": 60, "end": 80, "present": true},
+    {"rake_id": "R3", "demand_id": "D3", "route_id": "R_B", "section": "S2", "start": 80, "end": 105, "present": true},
+    {"rake_id": "R3", "demand_id": "D3", "route_id": "R_B", "section": "S6", "start": 105, "end": 155, "present": true}
+  ],
+  "disruption": {
+    "type": "section_blocked",
+    "target_entity_id": "S3",
+    "start_time": 40,
+    "duration": 120,
+    "severity": 1.0
+  }
+}

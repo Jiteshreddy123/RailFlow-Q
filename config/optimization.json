@@ -1,0 +1,22 @@
+{
+  "time_horizon_minutes": 360,
+  "demo_time_limit_seconds": 15,
+  "objective_weights": {
+    "delay": 1.0,
+    "waiting": 1.0,
+    "conflicts": 5.0,
+    "route_change": 5.0,
+    "yard_congestion": 1.0,
+    "idle_time": 0.5,
+    "reallocation": 8.0
+  },
+  "quantum": {
+    "time_bucket_minutes": 15,
+    "default_mode": "aer",
+    "ibm_backend": null
+  },
+  "headway_minutes": 2,
+  "deterministic_demo": true,
+  "random_seed": 42,
+  "num_search_workers": 8
+}

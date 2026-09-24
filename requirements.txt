@@ -1,0 +1,12 @@
+# Classical optimization
+ortools
+
+# IBM/Qiskit quantum stack
+qiskit
+qiskit-optimization
+qiskit-aer
+qiskit-algorithms
+qiskit-ibm-runtime
+
+# Testing
+pytest
